@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson1 Task2</title>
+    <script>
+        'use strict'; 
+
+        console.log("Задание 2.");
+
+        let calculateArea = function() {
+            let figure = prompt('Введите номер фигуры: квадрат - 1, прямоугольник - 2, треугольник - 3: ');
+
+            switch (figure) {
+                case '1':
+                    let x = prompt("Введите величину X: ");
+                    console.log("figure: квадрат, ", "area = ", x*x, " input: x = " , x);
+                    break;
+                case '2':
+                    let z = prompt("Введите величину Z: ");
+                    let y = prompt("Введите величину Y: ");
+                    console.log("figure: прямоугольник, ", "area = ", z*y, " input: z = " , z, ", y = ", y);
+                    break;
+                case '3':
+                    let h = prompt("Введите величину H: ");
+                    let b = prompt("Введите величину B: ");
+                    console.log("figure: треугольник, ", "area = ", 0.5*h*b, " input: h = " , h, ", b = ", b);
+                    break;
+                default:
+                    console.log("Фигура не выбрана");
+                    break;
+            }
+        }
+
+        calculateArea();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
