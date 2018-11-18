@@ -42,7 +42,7 @@
         {
             constructor(name, age, dateOfBirth, department, salary, developers) {
                 super(name, age, dateOfBirth, department, salary);
-                this.developers = [developers];
+                this.developers = [...developers];
             }
 
             displayInfo() {
@@ -51,7 +51,11 @@
             }
 
             addDeveloper(developers) {
-                (this.developers).push(developers);
+                if (developer instanceof Developer) {
+                    (this.developers).push(developers);
+                } else {
+                    console.log('Это не разработчик!');
+                }
             }
 
             removeDeveloper(developers) {
@@ -77,7 +81,11 @@
             }
 
             addManager(manager) {
-                this.manager = manager;
+                if (manager instanceof Manager) {
+                    this.manager = manager;
+                } else {
+                    console.log('Это не менеджер!');
+                }
             }
 
             removeManager(manager) {
