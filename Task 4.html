@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson1 Task4</title>
+    <script>
+        'use strict'; 
+
+        console.log('Задание 4.')
+
+        function* generatorModel() {
+
+            yield prompt('Введите имя: ');
+
+            yield prompt('Введите возраст: ');
+
+            return prompt('Введите город проживания: ');
+        }
+
+        let myModel = generatorModel();
+        let user = {};
+
+        user.name = myModel.next().value;
+        user.age = myModel.next().value;
+        user.city = myModel.next().value;
+
+        console.log(user);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

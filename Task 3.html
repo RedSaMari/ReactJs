@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson1 Task3</title>
+    <script>
+        'use strict'; 
+
+        console.log("Задание 3.");
+
+        class Human 
+        {
+            constructor(name, age, dateOfBirth) {
+                this.name = name;
+                this.age = age;
+                this.dateOfBirth = dateOfBirth;
+            }
+
+            displayInfo() {
+                console.log('Name: ', this.name);
+                console.log('Age: ', this.age);
+            }
+        }
+
+        class Employee extends Human
+        {
+            constructor(name, age, dateOfBirth, department, salary) {
+                super(name, age, dateOfBirth);
+                this.department = department;
+                this.salary = salary;
+            }
+
+            displayInfo() {
+                super.displayInfo();
+                console.log('Department: ', this.department);
+                console.log('Salary: ', this.salary);
+            }
+
+        }
+
+        class Manager extends Employee
+        {
+            constructor(name, age, dateOfBirth, department, salary, developers) {
+                super(name, age, dateOfBirth, department, salary);
+                this.developers = [developers];
+            }
+
+            displayInfo() {
+                super.displayInfo();
+                console.log('developers: ', this.developers);
+            }
+
+            addDeveloper(developers) {
+                (this.developers).push(developers);
+            }
+
+            removeDeveloper(developers) {
+                for (let item in this.developers) {
+                    if (this.developers[item] == developers) {
+                       (this.developers).splice(developers, 1); 
+                    }
+                }
+                
+            }
+        }
+
+        class Developer extends Employee
+        {
+            constructor(name, age, dateOfBirth, department, salary, manager) {
+                super(name, age, dateOfBirth, department, salary);
+                this.manager = manager;
+            }
+
+            displayInfo() {
+                super.displayInfo();
+                console.log('manager: ', this.manager);
+            }
+
+            addManager(manager) {
+                this.manager = manager;
+            }
+
+            removeManager(manager) {
+                delete(this.manager);
+            }
+        }
+
+        
+        let manager1 = new Manager('Olga', 30, '25.10', 'Sales', 80000);
+        let dev2 = new Developer('Andrew', 32, '10.12', 'Back-End', 90000);
+        let manager3 = new Manager('Pavel', 25, '15.01', 'Sales', 60000);
+        let dev4 = new Developer('Denis', 27, '11.08', 'Front-End', 70000);
+        let dev5 = new Developer('Vlad', 35, '11.08', 'Front-End', 95000);
+
+        manager1.developers = [dev2];
+        dev2.manager = manager1;
+        // console.log(manager1); // присваивает менеджера и разработчика 
+        dev5.manager = manager3;
+        manager3.developers = dev5;
+        // console.log(dev5); 
+        
+
+        manager1.addDeveloper(dev4);
+        // console.log(manager1); // добавляет менеджеру еще одного разработчика
+
+        manager1.removeDeveloper(dev2);
+        console.log(manager1); // удаляет одного разработчика
+
+        dev5.removeManager(manager3);
+        console.log(dev5); 
+        dev5.addManager(manager1);
+        console.log(dev5); //меняет менеджера
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
